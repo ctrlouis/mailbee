@@ -1,0 +1,23 @@
+global:
+    smtp:
+        host: smtp.example.com
+        port: 25
+        user:
+        password:
+        disable_tls: true
+        from_email: no-reply@example.com
+        from_name: Mail Bee 🐝
+    http:
+        address: ":1234"
+
+
+forms:
+    some-form-name:
+        name: some-form-name
+        key: some-random-key
+        overwrite_subject: true
+        allowed_domains:
+            - localhost:8080
+            - example.com
+        to_email:
+            - recepient@example.com

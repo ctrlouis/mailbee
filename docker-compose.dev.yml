@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+    mailbee:
+        image: node:16
+        container_name: mailbee
+        user: "node"
+        working_dir: /mailbee
+        ports:
+            - 3000:3000
+        environment:
+            - NODE_ENV=dev
+        volumes:
+            - ./src:/mailbee
+            - ./config.yml:/mailbee/config.yml
+        command: "npm run-script dev"
