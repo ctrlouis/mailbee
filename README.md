@@ -10,6 +10,16 @@ MailBee will always hide the email address of the recepient, since the forms are
 
 I liked the way MailBear was build and the features available. But some was missing and I don't really know Go language so I don't forked original repo.
 
+## Run with Docker
+
+You can easily run MailBee with Docker:
+
+Copy `config_sample.yml` to `config.yml` and run the server:
+
+    docker run -v $(PWD)/config.yml:/mailbee/config.yml ctrlouis/mailbee
+
+For your convenience I created a [docker-compose.yml](./docker-compose.yml) file.
+
 ## Run in Development
 
 Copy `config_sample.yml` to `config.yml` and run the server:
