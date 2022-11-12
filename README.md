@@ -16,6 +16,12 @@ Copy `config_sample.yml` to `config.yml` and run the server:
 
     `docker-compose -f docker-compose.dev.yml up`
 
+## Build image
+
+```
+docker build -t mailbee .
+```
+
 ## Configuration
 
 Configuration is very simple. Just create as many forms as you want in `config.yml`:
