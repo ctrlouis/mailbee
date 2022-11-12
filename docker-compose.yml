@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+
+    mailbee:
+        image: ctrlouis/mailbee
+        container_name: mailbee
+        ports:
+            - 3000:3000
+        volumes:
+            - ./config.yml:/mailbee/config.yml
