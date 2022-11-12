@@ -5,7 +5,7 @@ services:
     mailbee:
         image: node:16
         container_name: mailbee
-        user: "node"
+        # user: "node"
         working_dir: /mailbee
         ports:
             - 3000:3000
