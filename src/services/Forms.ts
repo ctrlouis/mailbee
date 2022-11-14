@@ -28,9 +28,8 @@ export function getFormIndex(forms: FormsType) {
     return formName;
 }
 
-export function validateFormData(formData :FormData) :FormData {
-    if (typeof formData.name !== 'string') throw new Error("Property name is missing");
-    if (typeof formData.email !== 'string') throw new Error("Property email is missing");
-    if (typeof formData.content !== 'string') throw new Error("Property content is missing");
-    return formData;
+export function validateFormData(formData: FormData, callback: Function): void {
+    if (typeof formData.name !== 'string') callback("Property name is missing");
+    else if (typeof formData.email !== 'string') callback("Property email is missing");
+    else if (typeof formData.content !== 'string') callback("Property content is missing");
 }
