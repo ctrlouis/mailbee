@@ -2,6 +2,7 @@ import express from 'express';
 import type { Request, Response } from 'express';
 import morgan from 'morgan';
 import { SendForm } from './controllers/FormsToMail';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 const router = express.Router();
@@ -16,6 +17,7 @@ router.post('/form/:formKey', SendForm);
 
 app.use('/api/v1', router);
 
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
