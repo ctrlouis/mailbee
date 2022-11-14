@@ -14,15 +14,15 @@ I liked the way MailBear was build and the features available. But some was miss
 
 You can easily run MailBee with Docker:
 
-Copy `config_sample.yml` to `config.yml` and run the server:
+Copy `config_sample.yml` to `config.yml`, `template_sample.html` to `template.html` and run the server:
 
-    docker run -v $(PWD)/config.yml:/mailbee/config.yml ctrlouis/mailbee
+    docker run -v $(PWD)/config.yml:/mailbee/config.yml -v $(PWD)/template.html:/mailbee/template.html -p 3000:3000 ctrlouis/mailbee
 
 For your convenience I created a [docker-compose.yml](./docker-compose.yml) file.
 
 ## Run in Development
 
-Copy `config_sample.yml` to `config.yml` and run the server:
+Copy `config_sample.yml` to `config.yml`, `template_sample.html` to `template.html` and run the server:
 
     `docker-compose -f docker-compose.dev.yml up`
 
@@ -52,6 +52,7 @@ global:
 
 forms:
     some-form-name:
+        name: some-form-name
         key: some-random-key
         overwrite_subject: true
         allowed_domains:
