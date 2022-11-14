@@ -9,3 +9,4 @@ services:
             - 3000:3000
         volumes:
             - ./config.yml:/mailbee/config.yml
+            - ./template.html:/mailbee/template.html

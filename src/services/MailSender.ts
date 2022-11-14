@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import MailConfig from './MailConfig';
+import MailTemplate from './MailTemplate';
 import type { FormType } from '../interfaces/MailConfig';
 import type { FormData } from '../interfaces/FormData';
 
@@ -23,12 +24,18 @@ export async function SendMail(form: FormType, formData: FormData) {
             subject = formData.subject;
         }
         
+        const data = {
+            name: formData.name,
+            email: formData.email,
+            content: formData.content,
+        };
+        const html = MailTemplate.render(data);
         // send mail with defined transport object
         const info = await transporter.sendMail({
             from: `"${MailConfig.fromName}" <${MailConfig.fromEmail}>`, // sender address
             to: to, // list of receivers
             subject: subject, // Subject line
-            html: `<b>${formData.content}</b>`, // html body
+            html: html, // html body
         });
     } catch (error) {
         throw new Error("SMTP configuration error");

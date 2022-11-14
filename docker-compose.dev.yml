@@ -14,4 +14,5 @@ services:
         volumes:
             - ./src:/mailbee
             - ./config.yml:/mailbee/config.yml
+            - ./template.html:/mailbee/template.html
         command: "npm run-script dev"
