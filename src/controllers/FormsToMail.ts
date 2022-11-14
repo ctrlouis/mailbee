@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { SendMail } from '../services/MailSender';
 import { findForm, validateFormData } from '../services/Forms';
 import { allowOrigin } from '../services/Origin';
