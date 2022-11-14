@@ -15,7 +15,7 @@ class MailConfig {
     private static read() {
         const file = fs.readFileSync(MailConfig._configPath, 'utf8');
         const config = YAML.parse(file);
-        console.log(`Config ${MailConfig._configPath} loaded`);
+        console.log(`Config ${MailConfig._configPath} loaded ✅`);
         return config;
     }
 
