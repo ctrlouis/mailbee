@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import createError from 'http-errors';
+import { totalFormSubmissions } from '../controllers/Prometheus';
 import { SendMail } from '../services/MailSender';
 import { findForm, validateFormData } from '../services/Forms';
 import { allowOrigin } from '../services/Origin';
@@ -23,6 +24,7 @@ export async function SendForm (req: Request, res: Response, next :NextFunction)
 
         // send form response by emails
         await SendMail(form!, formData);
+        totalFormSubmissions.inc({ formName: form.name }, 1);
         res.json({
             message: "Form send",
         });
