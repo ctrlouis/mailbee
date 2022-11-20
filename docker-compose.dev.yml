@@ -42,7 +42,6 @@ services:
             - ./datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
             - ./dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
             - ./dashboard.json:/etc/grafana/provisioning/dashboards/dashboard.json
-            - ./mailbear_dashboard.json:/etc/grafana/provisioning/dashboards/mailbear_dashboard.json
         links:
             - prometheus
         depends_on:
