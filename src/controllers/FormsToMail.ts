@@ -25,10 +25,21 @@ export async function SendForm (req: Request, res: Response, next :NextFunction)
         // send form response by emails
         await SendMail(form!, formData);
         totalFormSubmissions.inc({ formName: form.name }, 1);
-        res.json({
-            message: "Form send",
-        });
+        
+        if (typeof req.query.redirect === 'string') {
+            res.redirect(req.query.redirect);
+        } else {
+            res.json({
+                message: "Form send",
+            });
+        }
     } catch (error :any) {
-        next(error);
+        if (typeof req.query.redirect_error === 'string') {
+            res.redirect(req.query.redirect_error);
+        } else if (typeof req.query.redirect === 'string') {
+            res.redirect(req.query.redirect);
+        } else {
+            next(error);
+        }
     }
 }
