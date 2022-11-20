@@ -15,6 +15,7 @@ services:
             - 3000:3000
         environment:
             - NODE_ENV=dev
+            - TZ=Europe/Amsterdam
         volumes:
             - ./src:/mailbee
             - ./config.yml:/mailbee/config.yml
