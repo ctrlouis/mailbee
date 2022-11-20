@@ -20,7 +20,7 @@ export async function SendMail(form: FormType, formData: FormData) {
         const to = form.to_email.join(',');
 
         // set subject
-        let subject = form.subject || process.env.DEFAULT_SUBJECT || "New message ✉️";
+        let subject = process.env.DEFAULT_SUBJECT || "New message ✉️";
         if (form.overwrite_subject && formData.subject) {
             subject = formData.subject;
         }
