@@ -10,10 +10,6 @@ const app = express();
 const router = express.Router();
 const apiQuota = createApiQuota();
 
-app.get('/test', (req: Request, res: Response) => {
-    res.send("This is a test");
-});
-
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(prometheusRouter);
