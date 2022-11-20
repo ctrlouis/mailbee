@@ -1,3 +1,4 @@
+import moment from 'moment';
 import nodemailer from 'nodemailer';
 import MailConfig from './MailConfig';
 import MailTemplate from './MailTemplate';
@@ -24,12 +25,16 @@ export async function SendMail(form: FormType, formData: FormData) {
             subject = formData.subject;
         }
         
+        // generate html content
         const data = {
+            formName: form.name,
             name: formData.name,
             email: formData.email,
             content: formData.content,
+            time: moment().format('h:mm:ss a - MMMM Do YYYY'),
         };
         const html = MailTemplate.render(data);
+
         // send mail with defined transport object
         const info = await transporter.sendMail({
             from: `"${MailConfig.fromName}" <${MailConfig.fromEmail}>`, // sender address
