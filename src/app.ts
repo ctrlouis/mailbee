@@ -13,7 +13,6 @@ const apiQuota = createApiQuota();
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(morgan('dev'));
-app.use(prometheusRouter);
 
 router.get('/', (req: Request, res: Response) => {
     res.send("Welcome to mail bee! 🐝");
@@ -28,4 +27,12 @@ app.use(errorHandler);
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Application started on port ${port}! 🚀`);
+});
+
+// metrics
+const metrisApp = express();
+metrisApp.use(prometheusRouter);
+const metricsPort = process.env.METRICS_PORT || 3001;
+metrisApp.listen(metricsPort, () => {
+    console.log(`Metrics started on port ${metricsPort}! 📈`);
 });

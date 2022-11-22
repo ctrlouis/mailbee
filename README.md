@@ -16,7 +16,17 @@ You can easily run MailBee with Docker:
 
 Copy `config_sample.yml` to `config.yml`, `template_sample.html` to `template.html` and run the server:
 
-    docker run -v $(PWD)/config.yml:/mailbee/config.yml -v $(PWD)/template.html:/mailbee/template.html -p 3000:3000 ctrlouis/mailbee
+```bash
+    docker network create mailbee_network # create network to link api with db
+    docker run --name redis_mailbee --network mailbee_network -d redis:7 # redis is required for rate limiting 
+    docker run \
+        -p 3000:3000 \
+        -v ${PWD}/config.yml:/mailbee/config.yml \
+        -v ${PWD}/template.html:/mailbee/template.html \
+        --name mailbee \
+        --network mailbee_network \
+        -d ctrlouis/mailbee # start mailbee
+```
 
 For your convenience I created a [docker-compose.yml](./docker-compose.yml) file.
 
@@ -96,6 +106,7 @@ Query params `redirect` and `redirect_error` are available to your convenient :
 | Variable                      | Default value                     | Description |
 | ----------------------------- | --------------------------------- | ----------- |
 | **PORT**                      | *3000*                            | Api listening port
+| **METRICS_PORT**              | *3001*                            | Metrics listening port
 | **CONFIGPATH**                | */mailbee/config.yml*             | Path to config.yml file
 | **TEMPLATEPATH**              | */mailbee/template.html*          | Path to template.html file
 | **DEFAULT_SUBJECT**           | *New message ✉️ *                  | Default mail subject
@@ -116,9 +127,11 @@ Build the mail template you want with `template.html` file. HTML is generate wit
 
 ## Metrics
 
-Prometheus metrics can be found on `:3000/metrics` by default. To get statistics of submissions per form use this metric: `mailbee_form_submissions_total{form="some-form-name"}`.
+Prometheus metrics can be found on `:3001/metrics` by default. To get statistics of submissions per form use this metric: `mailbee_form_submissions_total{form="some-form-name"}`.
 
 A Grafana dashboard for these metrics is available here: [./dashboard.json](dashboard.json)
+
+Grafana dashboard can be found on `:9090` by default.
 
 ## Acknowledgements
 
