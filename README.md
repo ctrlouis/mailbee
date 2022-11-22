@@ -1,6 +1,6 @@
 # 🐝 Mailbee: Forms Backend
 
-🐝 MailBee is a JS version of [🐻 MailBear](https://github.com/DenBeke/mailbear ) (by version, I mean copy)
+[🐝 MailBee](https://github.com/ctrlouis/mailbee) is a JS version of [🐻 MailBear](https://github.com/DenBeke/mailbear ) (by version, I mean copy)
 
 MailBee is an open source, self hosted forms backend. Just do a post request to the API with some form data, and MailBee will make sure the submission is sent to you via mail!
 
