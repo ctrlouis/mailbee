@@ -95,7 +95,7 @@ Query params `redirect` and `redirect_error` are available to your convenient :
 <form action="http://localhost:3000/api/v1/form/some-form-key?redirect=http://domaine.com/form-page.html&redirect_error=http://domaine.com/form-page.html?error" method="post">
         <input type="email" name="email" value="" required>
         <input type="text" name="name" value="" required>
-        <input type="hidden" name="subjec" value="" required>
+        <input type="hidden" name="subject" value="" required>
         <input type="text" name="content" placeholder="Message" value="Salut les potes !" required>
         <button type="submit">Envoyer</button>
     </form>
