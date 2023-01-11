@@ -7,7 +7,7 @@ services:
         container_name: redis_mailbee
 
     mailbee:
-        image: node:16
+        image: node:18
         container_name: mailbee
         user: "node"
         working_dir: /mailbee
