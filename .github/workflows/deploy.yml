@@ -5,6 +5,9 @@ on:
     tags: 
       - '*.*.*'
 
+env:
+  IMAGE_NAME: ctrlouis/mailbee
+
 jobs:
 
   deploy-mailbee:
@@ -27,7 +30,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ctrlouis/mailbee
+          images: ${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
         id: build-and-push
@@ -59,7 +62,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ctrlouis/mailbee
+          images: ${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
         id: build-and-push
