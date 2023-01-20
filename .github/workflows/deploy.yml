@@ -2,8 +2,8 @@ name: deploy
 
 on:
   push:
-    branches: [ "automatisation" ] # test
-    # tags: [ 'v*.*.*' ]
+    tags: 
+      - '*.*.*'
 
 jobs:
 
@@ -27,16 +27,14 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ctrlouis/mailbee
-          # images: ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}
+          images: ${{ vars.DOCKERHUB_USERNAME }}/mailbee
 
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./docker
+          file: Dockerfile-node
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: latest,${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # cache-from: type=gha
-          # cache-to: type=gha,mode=max
