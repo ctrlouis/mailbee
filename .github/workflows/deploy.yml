@@ -33,8 +33,8 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
-          context: ./docker
-          file: Dockerfile-node
+          context: .
+          file: ./docker/Dockerfile-node
           push: true
           tags: latest,${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
