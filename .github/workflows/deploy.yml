@@ -69,7 +69,6 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
           flavor: |
-            latest=false
             suffix=-alpine
 
       - name: Build and push Docker image
