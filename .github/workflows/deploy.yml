@@ -27,7 +27,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ vars.DOCKERHUB_USERNAME }}/mailbee
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/mailbee
 
       - name: Build and push Docker image
         id: build-and-push
