@@ -30,13 +30,13 @@ jobs:
           images: ctrlouis/mailbee
           # images: ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}
 
-      - name: Build and push Doc ker image
+      - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: test
+          tags: latest
           # tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # cache-from: type=gha
