@@ -63,6 +63,11 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push Docker image
         id: build-and-push
@@ -71,5 +76,5 @@ jobs:
           context: .
           file: ./docker/Dockerfile-node-alpine
           push: true
-          tags: '${{ steps.meta.outputs.tags }}-alpine'
+          tags: ${{ steps.meta.outputs.tags }}-alpine
           labels: ${{ steps.meta.outputs.labels }}
