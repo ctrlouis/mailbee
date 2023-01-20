@@ -68,5 +68,5 @@ jobs:
           context: .
           file: ./docker/Dockerfile-node-alpine
           push: true
-          tags: ${{ steps.meta.outputs.tags }}-alpine
+          tags: '${{ steps.meta.outputs.tags }}-alpine'
           labels: ${{ steps.meta.outputs.labels }}
