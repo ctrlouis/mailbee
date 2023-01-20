@@ -41,7 +41,7 @@ Api is available at `:3000`, Prometheus at :8080
 ## Build image
 
 ```
-docker build -t mailbee .
+docker build -t mailbee ./docker/Dockerfile-node
 ```
 
 ## Forms configuration
