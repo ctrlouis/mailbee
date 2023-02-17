@@ -24,10 +24,17 @@ npm_update_app:
 
 build_docker_image:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	docker build -t mailbee .
 =======
+=======
+>>>>>>> 47ea4f0212c1c800549fcd37fc14f40882ca54c1
 	docker build -t mailbee ./docker/Dockerfile-node
 
 build_docker_image_alpine:
 	docker build -t mailbee ./docker/Dockerfile-node-alpine
+<<<<<<< HEAD
 >>>>>>> main
+=======
+
+>>>>>>> 47ea4f0212c1c800549fcd37fc14f40882ca54c1
