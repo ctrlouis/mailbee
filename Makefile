@@ -23,4 +23,11 @@ npm_update_app:
 	docker run -it --rm -v ${PWD}/app:/app -w /app node:$(node_version) npm update -D
 
 build_docker_image:
+<<<<<<< HEAD
 	docker build -t mailbee .
+=======
+	docker build -t mailbee ./docker/Dockerfile-node
+
+build_docker_image_alpine:
+	docker build -t mailbee ./docker/Dockerfile-node-alpine
+>>>>>>> main
